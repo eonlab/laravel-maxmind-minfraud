@@ -34,11 +34,9 @@ class MinFraudServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      *
-     * @param  \Illuminate\Routing\Router  $router
-     *
      * @return void
      */
-    public function boot(Router $router)
+    public function boot()
     {
     }
 
