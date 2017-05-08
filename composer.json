@@ -1,0 +1,22 @@
+{
+    "name": "ilanco/laravel-maxmind-minfraud",
+    "description": "Integerates MaxMind minFraud with Laravel and provides an easy configuration.",
+    "keywords": ["maxmind", "minfraud", "laravel", "laravel5"],
+    "authors": [
+        {
+            "name": "Ilan Cohen",
+            "email": "ilanco@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5",
+        "maxmind/minfraud": "~1.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "IC\\Laravel\\MaxMindMinFraud": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
