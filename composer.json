@@ -14,8 +14,8 @@
         "maxmind/minfraud": "~1.0"
     },
     "autoload": {
-        "psr-0": {
-            "IC\\Laravel\\MaxMindMinFraud": "src/"
+        "psr-4": {
+            "IC\\Laravel\\MaxMindMinFraud\\": "src/"
         }
     },
     "minimum-stability": "stable"
