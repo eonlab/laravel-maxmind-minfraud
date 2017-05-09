@@ -7,14 +7,14 @@ return [
      *
      * @type integer
      */
-    'user_id' => null,
+    'user_id' => env('MAXMIND_USER_ID', null),
 
     /**
      * MaxMind license key.
      *
      * @type string
      */
-    'license_key' => null,
+    'license_key' => env('MAXMIND_LICENSE_KEY', null),
 
     /**
      * Response models.
@@ -32,6 +32,6 @@ return [
      *
      * @type string
      */
-    'default_response_model' => 'insights',
+    'default_response_model' => env('MAXMIND_DEFAULT_RESPONSE_MODEL', 'insights'),
 
 ];
