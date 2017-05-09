@@ -26,9 +26,13 @@ class MinFraudServiceProvider extends ServiceProvider
         $this->mergeConfigFrom($configPath, 'maxmind-minfraud');
         $this->publishes([$configPath => config_path('maxmind-minfraud.php')], 'config');
 
-        $this->app->singleton(MinFraud::class, function ($app) {
-            return new MinFraud();
+        $this->app->singleton('maxmind.minfraud', function ($app) {
+            $config = $app['config']['maxmind-minfraud'];
+
+            return new MinFraud($config['user_id'], $config['license_key']);
         });
+
+        $this->app->alias('maxmind.minfraud', MinFraud::class);
     }
 
     /**
@@ -47,6 +51,6 @@ class MinFraudServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [Connection::class];
+        return ['maxmind.minfraud'];
     }
 }
