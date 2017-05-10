@@ -6,8 +6,19 @@ use Illuminate\Support\ServiceProvider;
 
 use MaxMind\MinFraud;
 
+use IC\Laravel\MaxMindMinFraud\Middleware\MaxMindMinFraud;
+
 class MinFraudServiceProvider extends ServiceProvider
 {
+    /**
+     * The middleware aliases.
+     *
+     * @var array
+     */
+    protected $middlewareAliases = [
+        'maxmind.minfraud' => MaxMindMinFraud::class,
+    ];
+
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -42,6 +53,22 @@ class MinFraudServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->aliasMiddleware();
+    }
+
+    /**
+     * Alias the middleware.
+     *
+     * @return void
+     */
+    protected function aliasMiddleware()
+    {
+        $router = $this->app['router'];
+
+        $method = method_exists($router, 'aliasMiddleware') ? 'aliasMiddleware' : 'middleware';
+        foreach ($this->middlewareAliases as $alias => $middleware) {
+            $router->$method($alias, $middleware);
+        }
     }
 
     /**
